@@ -1,0 +1,49 @@
+
+spring:
+  application:
+    name: ribbon-consumer2
+  mvc:
+    static-path-pattern: /static/**
+  redis:
+    database: 0
+    host: 47.112.20.178
+    port: 6379
+    password: 123456
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 10
+        max-active: 8
+        max-wait: 1ms
+      shutdown-timeout: 100ms
+  datasource:
+      master:
+          jdbc-url: jdbc:mysql://127.0.0.1:3306/mallcloud
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.jdbc.Driver
+      slave1:
+          jdbc-url: jdbc:mysql://47.112.20.178:3306/test
+          username: pig   # 只读账户
+          password: newpassword
+          driver-class-name: com.mysql.jdbc.Driver
+      slave2:
+          jdbc-url: jdbc:mysql://47.112.20.178:3306/test
+          username: root   # 只读账户
+          password: newpassword
+          driver-class-name: com.mysql.jdbc.Driver
+
+
+server:
+  port: 82
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://47.112.20.178:7001/eureka,http://47.112.20.178:7002/eureka
+
+
+
+
+
+

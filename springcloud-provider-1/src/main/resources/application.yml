@@ -1,0 +1,28 @@
+server:
+  port: 8001
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml  #mybatis�����ļ�·��
+  type-aliases-package: com.ll.springcloudapi.entities  #����ʵ����λ��
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml       #mapperӳ���ļ�第三方
+
+
+spring:
+  application:
+    name: springcloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mallcloud?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/
+  instance:
+    instance-id: springcloud-8001
+    prefer-ip-address: true
+
+
